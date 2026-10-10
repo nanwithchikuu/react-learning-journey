@@ -1,0 +1,21 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.calculator{
+  border: 1px solid rgba(0, 0, 0, 0.355);
+  width: 200px;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.buttonsContainer {
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+
+}
