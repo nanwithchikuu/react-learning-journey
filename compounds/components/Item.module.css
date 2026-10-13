@@ -1,0 +1,13 @@
+
+.kg-color{
+  background-color: cadetblue;
+}
+
+.kg-weight {
+  font-weight: 800;
+  color: rgb(221, 36, 36);
+}
+
+.buttons {
+  float: right;
+}
