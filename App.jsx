@@ -1,20 +1,35 @@
-import React from "react";
+import FoodItems from "./components/FoodItems";
+import ErrorMessage from "./components/ErrorMessage";
+import Containers from "./components/Containers";
+import AddButtons from "./components/AddButtons";
+import { useState } from "react";
 
 function App() {
-  let foodItems = ["Dal", "Green Vegetable", "Roti", "Salad", "Milk"];
+  const [foodItems, setFoodItems] = useState([
+    "sabzi",
+    "Green Vegetable",
+    "Roti",
+    "Salad",
+    "Milk",
+  ]);
+
+  let amit = (event) => {
+    if (event.key === "Enter") {
+      let newFoodItems = event.target.value;
+      let newItem = [...foodItems, newFoodItems];
+      setFoodItems(newItem);
+    }
+  };
 
   return (
-    <React.Fragment>
-      <h1>Health food</h1>
-      {foodItems == 0 && <h3>I'm still Hungry</h3>}
-      <ul className="list-group">
-        {foodItems.map((item) => (
-          <li key={item} className="list-group-item">
-            {item}
-          </li>
-        ))}
-      </ul>
-    </React.Fragment>
+    <>
+      <Containers>
+        <h1 className="kg-weight">Health food</h1>
+        <AddButtons amit={amit} />
+        <ErrorMessage items={foodItems} />
+        <FoodItems items={foodItems} />
+      </Containers>
+    </>
   );
 }
 
