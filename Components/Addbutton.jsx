@@ -1,0 +1,37 @@
+
+import styles from "./Button.module.css";
+
+const AddButton = ({showButton}) => {
+  let buttonList = [
+    "C",
+    "1",
+    "2",
+    "+",
+    "3",
+    "4",
+    "-",
+    "5",
+    "6",
+    "*",
+    "7",
+    "8",
+    "/",
+    "9",
+    "0",
+    "=",
+    ".",
+  ];
+
+  return (
+    <>
+      {buttonList.map((item) => (
+        <button key={item} className={styles.button}
+        onClick={showButton}
+
+          >{item}
+        </button>
+      ))}
+    </>
+  );
+};
+export default AddButton;

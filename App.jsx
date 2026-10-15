@@ -1,35 +1,32 @@
-import FoodItems from "./components/FoodItems";
-import ErrorMessage from "./components/ErrorMessage";
-import Containers from "./components/Containers";
-import AddButtons from "./components/AddButtons";
 import { useState } from "react";
-
+import styles from "./App.module.css";
+import AddButton from "./Components/Addbutton";
+import DisplayButton from "./Components/DisplayButton";
 function App() {
-  const [foodItems, setFoodItems] = useState([
-    "sabzi",
-    "Green Vegetable",
-    "Roti",
-    "Salad",
-    "Milk",
-  ]);
-
-  let amit = (event) => {
-    if (event.key === "Enter") {
-      let newFoodItems = event.target.value;
-      let newItem = [...foodItems, newFoodItems];
-      setFoodItems(newItem);
+  let [textValue, settextvalue] = useState("");
+  let showButton = (event) => {
+    let valueText = event.target.innerText
+    let updatevalue = textValue + valueText;
+    settextvalue(updatevalue);
+    if(valueText == "C") {
+      settextvalue('')
+    } else if  ( valueText == "=") {
+      try {
+        settextvalue(String(eval(textValue)))
+      } catch {
+        settextvalue("Error")
+      }
+    }else{
+      console.log(updatevalue)
     }
   };
-
   return (
-    <>
-      <Containers>
-        <h1 className="kg-weight">Health food</h1>
-        <AddButtons amit={amit} />
-        <ErrorMessage items={foodItems} />
-        <FoodItems items={foodItems} />
-      </Containers>
-    </>
+    <div className={styles.calculator} id="calculator">
+      <DisplayButton newTextValue={textValue}></DisplayButton>
+      <div className={styles.buttonsContainer}>
+        <AddButton showButton={showButton}></AddButton>
+      </div>
+    </div>
   );
 }
 
